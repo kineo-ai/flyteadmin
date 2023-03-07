@@ -138,6 +138,9 @@ func (s RandomClusterSelector) GetTarget(ctx context.Context, spec *executionclu
 
 	if weightedRandomList == nil {
 		weightedRandomList = s.equalWeightedAllClusters
+		// Kineo was here. If you do this change, local pyflyte run fails if the cluster is not already running.
+		// return nil, nil
+		// logger.Warnf(ctx, "Kineo was here and decided that runs should not be scheduled randomly to clusters %s", s.equalWeightedAllClusters)
 	}
 
 	executionName := spec.ExecutionID

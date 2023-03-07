@@ -922,6 +922,7 @@ func (m *ExecutionManager) CreateExecution(
 	ctx context.Context, request admin.ExecutionCreateRequest, requestedAt time.Time) (
 	*admin.ExecutionCreateResponse, error) {
 	// Prior to  flyteidl v0.15.0, Inputs was held in ExecutionSpec. Ensure older clients continue to work.
+	logger.Debugf(ctx, "Hello from Kineo adjusted execution manager")
 	if request.Inputs == nil || len(request.Inputs.Literals) == 0 {
 		request.Inputs = request.GetSpec().GetInputs()
 	}

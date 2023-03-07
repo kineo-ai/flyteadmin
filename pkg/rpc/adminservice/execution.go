@@ -4,6 +4,8 @@ import (
 	"context"
 	"time"
 
+	"github.com/flyteorg/flytestdlib/logger"
+
 	"github.com/flyteorg/flyteadmin/pkg/rpc/adminservice/util"
 	"github.com/flyteorg/flyteidl/gen/pb-go/flyteidl/admin"
 	"google.golang.org/grpc/codes"
@@ -14,6 +16,7 @@ func (m *AdminService) CreateExecution(
 	ctx context.Context, request *admin.ExecutionCreateRequest) (*admin.ExecutionCreateResponse, error) {
 	defer m.interceptPanic(ctx, request)
 	requestedAt := time.Now()
+	logger.Debugf(ctx, "Hello from Kineo adjusted execution service")
 	if request == nil {
 		return nil, status.Errorf(codes.InvalidArgument, "Incorrect request, nil requests not allowed")
 	}
